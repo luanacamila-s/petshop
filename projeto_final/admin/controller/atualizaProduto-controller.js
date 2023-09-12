@@ -1,4 +1,4 @@
-import { clienteService } from '../service/cliente-service.js'
+import { produtoService } from '../service/produto-service.js'
 
 
 (async () => { 
@@ -6,12 +6,14 @@ import { clienteService } from '../service/cliente-service.js'
 
   const id = pegaURL.searchParams.get('id')
   
-  const inputNome = document.querySelector('[data-nome]')
-  const inputEmail = document.querySelector('[data-email]')
+  const inputProduto = document.querySelector('[data-produto]')
+  const inputPreco = document.querySelector('[data-preco]')
+  const inputDescricao = document.querySelector('[data-descricao]')
   try { 
-    const dados = await clienteService.detalhaCliente(id)
-    inputNome.value = dados.nome
-    inputEmail.value = dados.email
+    const dados = await produtoService.detalhaProduto(id)
+    inputProduto.value = dados.produto
+    inputPreco.value = dados.preco
+    inputDescricao.value = dados.descricao
   }
   catch(erro){
     console.log(erro)
@@ -23,7 +25,7 @@ import { clienteService } from '../service/cliente-service.js'
   formulario.addEventListener('submit', async (evento)=> { 
     evento.preventDefault()
     try {
-      await clienteService.atualizaCliente(id, inputNome.value, inputEmail.value)
+      await produtoService.atualizaProduto(id, inputProduto.value, inputPreco.value, inputDescricao.value)
       window.location.href = "../telas/edicao_concluida.html"
     }
     catch(erro){

@@ -1,10 +1,11 @@
-import { clienteService } from '../service/cliente-service.js'
+import { produtoService } from '../service/produto-service.js'
 
-const criaNovaLinha = (nome, email, id) =>  { 
-  const linhaNovoCliente = document.createElement('tr')
+const criaNovaLinha = (produto, preco, descricao, id) =>  { 
+  const linhaNovoProduto = document.createElement('tr')
   const conteudo = `
-      <td class="td" data-td>${nome}</td>
-                  <td>${email}</td>
+      <td class="td" data-td>${produto}</td>
+                  <td>${preco}</td>
+                  <td>${descricao}</td>
                   <td>
                       <ul class="tabela__botoes-controle">
                           <li><a href="../telas/edita_cliente.html?id=${id}" class="botao-simples botao-simples--editar">Editar</a></li>
@@ -12,9 +13,9 @@ const criaNovaLinha = (nome, email, id) =>  {
                       </ul>
                   </td> 
                   `
-  linhaNovoCliente.innerHTML = conteudo
-  linhaNovoCliente.dataset.id = id
-  return linhaNovoCliente
+  linhaNovoProduto.innerHTML = conteudo
+  linhaNovoProduto.dataset.id = id
+  return linhaNovoProduto
 }
 
 const tabela = document.querySelector('[data-tabela]')
@@ -23,10 +24,10 @@ tabela.addEventListener('click', async (evento)=> {
     let ehBotaoDeDeleta = evento.target.className === 'botao-simples botao-simples--excluir'
     if(ehBotaoDeDeleta){
         try {
-            const linhaCliente = evento.target.closest('[data-id]')
-            let id = linhaCliente.dataset.id
-            await clienteService.removeCliente(id)
-            linhaCliente.remove()
+            const linhaProduto = evento.target.closest('[data-id]')
+            let id = linhaProduto.dataset.id
+            await produtoService.removeProduto(id)
+            linhaProduto.remove()
         }
         catch(erro){
             console.log(erro)
@@ -37,9 +38,9 @@ tabela.addEventListener('click', async (evento)=> {
 
 const render = async () =>  {
     try {
-        const listaClientes = await clienteService.listaClientes()
-        listaClientes.forEach(elemento => {
-            tabela.appendChild(criaNovaLinha(elemento.nome,elemento.email, elemento.id))
+        const listaProduto = await produtoService.listaProduto()
+        listaProduto.forEach(elemento => {
+            tabela.appendChild(criaNovaLinha(elemento.produto,elemento.preco,elemento.descricao, elemento.id))
     })
     }
     catch(erro){

@@ -44,7 +44,6 @@ const detalhaCliente = (id) => {
         if(resposta.ok){
             return resposta.json()
         }
-    
         throw new Error('Não foi possível detalhar um cliente')
     })
 }
@@ -74,5 +73,4 @@ export const clienteService = {
     removeCliente,
     detalhaCliente,
     atualizaCliente
-
 }

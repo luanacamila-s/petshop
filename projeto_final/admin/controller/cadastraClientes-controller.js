@@ -2,7 +2,6 @@ import { clienteService } from '../service/cliente-service.js'
 
 const formulario = document.querySelector('[data-form]')
 
-
 formulario.addEventListener('submit', async (evento) => {
   evento.preventDefault()
   try {
