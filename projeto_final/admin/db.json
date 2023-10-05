@@ -1,40 +1,4 @@
 {
-  "profile": [
-    {
-      "nome": "kr5lllllll",
-      "email": "aa",
-      "id": 1
-    },
-    {
-      "nome": "Nicao",
-      "email": "TEUPAI",
-      "id": 2
-    }
-  ],
-  "product": [
-    {
-      "produto": "coleira",
-      "preco": 0,
-      "descricao": "dgfgsfgdfgs",
-      "id": 1
-    },
-    {
-      "produto": "a",
-      "preco": "1",
-      "descricao": "a",
-      "id": 2
-    },
-    {
-      "produto": "racao",
-      "preco": "10",
-      "descricao": "comida",
-      "id": 3
-    },
-    {
-      "produto": "a",
-      "preco": "1",
-      "descricao": "b",
-      "id": 4
-    }
-  ]
+  "profile": [],
+  "product": []
 }

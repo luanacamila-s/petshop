@@ -10,7 +10,7 @@ formulario.addEventListener('submit', async (evento) => {
     const descricao = evento.target.querySelector('[data-descricao]').value
 
     await produtoService.criarProduto(produto, preco, descricao)
-    window.location.href = '../telas/cadastro_concluido.html'
+    window.location.href = '../telas/cadastro_concluido-produto.html'
   }
   catch (erro) {
     console.log(erro)
